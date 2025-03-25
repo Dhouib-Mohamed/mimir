@@ -368,8 +368,6 @@ jobs:
 
   deploy:
     needs: [prepare, build, test, lint, integration]
-    # Only deploy images on pushes to the grafana/mimir repo, which either are tag pushes or weekly release branch pushes.
-    if: needs.prepare.outputs.is_deploy == 'true'
     runs-on: ubuntu-latest
     container:
       image: ${{ needs.prepare.outputs.build_image }}
